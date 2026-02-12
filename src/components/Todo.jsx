@@ -53,7 +53,7 @@ const Todo = () => {
                     </button>
                     <button
                         onClick={handleClearAll}
-                        className="bg-slate-950 text-white font-semibold py-2 px-2 rounded-xl hover:bg-violet-600 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-lg shadow-slate-200">
+                        className="bg-slate-950 text-white font-semibold py-2 px-2 rounded-xl hover:bg-red-600 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-lg shadow-slate-200">
                         Clear all
                     </button>
 
