@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTask, deleteTask } from '../Store'
+import { addTask, clearAll, deleteTask, saveAll } from '../features/tasks/TaskSlice'
 
 const Todo = () => {
     const [task, setTask] = useState("")
@@ -16,14 +16,20 @@ const Todo = () => {
     }
     const handleFormSubmit = (event) => {
         event.preventDefault();
+      
+        
         if (task.trim() === "") return
-        if (task.includes(tasks)) return false;
         dispatch(addTask(task))
         return setTask('')
     }
     const handleDelete = (id) => {
         return dispatch(deleteTask(id));
     }
+    const handleClearAll = () => {
+        return dispatch(clearAll())
+    }
+   
+
     return (
         <div className="bg-slate-900 min-h-screen flex items-center justify-center p-4">
             <div className="bg-slate-100 w-full max-w-md rounded-3xl shadow-2xl flex flex-col overflow-hidden">
@@ -45,6 +51,12 @@ const Todo = () => {
                     <button className="bg-slate-950 text-white font-bold py-2 px-6 rounded-xl hover:bg-violet-600 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-lg shadow-slate-200">
                         Add
                     </button>
+                    <button
+                        onClick={handleClearAll}
+                        className="bg-slate-950 text-white font-semibold py-2 px-2 rounded-xl hover:bg-violet-600 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-lg shadow-slate-200">
+                        Clear all
+                    </button>
+
                 </form>
 
                 <div className="flex-1 px-6 pb-8">
