@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
-import { thunk } from "redux-thunk";
+import { configureStore, createStore } from "@reduxjs/toolkit";
 
 const ADD_TASK = "task/add"
 const DELETE_TASK = "task/delete"
@@ -30,8 +29,14 @@ const taskReducer = (state = initialState, action) => {
     }
 }
 
-export const store = createStore(taskReducer);
-// console.log(store)
+// export const store = createStore(taskReducer);  // redux old way
+// // console.log(store)
+
+export const store = configureStore({  // redux-toolkit new way
+    reducer: {
+        taskReducer,
+    }
+})
 
 export const addTask = (data) => {
     return { type: ADD_TASK, payload: data }

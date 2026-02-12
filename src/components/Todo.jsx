@@ -5,8 +5,9 @@ import { addTask, deleteTask } from '../Store'
 
 const Todo = () => {
     const [task, setTask] = useState("")
-    const tasks = useSelector(state => state.task)
-    
+    // const tasks = useSelector(state => state.task)  // react redux (old) 
+    const tasks = useSelector(state => state.taskReducer.task) // redux-toolkit (new)
+
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
